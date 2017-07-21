@@ -59,13 +59,15 @@ After them we again use the same region of interest as before (which we used to 
 ### 2. Identify potential shortcomings with your current pipeline
 
 
-One potential shortcoming would be what would happen when ... 
-
-Another shortcoming could be ...
+There are several possible shortcommings of the current pipeline
+* The Current pipeline looks for all edges in the region of interest polygon 
+  * this could also detect random object in the view of this polygon which would distort the lines drawn
+* Since we use a linear fit of the points and also look for lines using a hough transform it would be hard to detect lanes on curved roads
+* The lanes are also expected to be always visible in all the frames with the same intensity
 
 
 ### 3. Suggest possible improvements to your pipeline
-
-A possible improvement would be to ...
-
-Another potential improvement could be to ...
+There are several possible impreovments to the pipeline:
+* A Potentially dynamic region of interest that we define based on the context of the road
+* using a multi degree polynomial to draw the lanes would help with proper and more stable lanes
+* We could also assume that lanes are always visible when the image is in yellow ( since lanes are yellow or white) and take advantage of this property. So using a HSV transform instead of the gray scale might help in the challenge video.
